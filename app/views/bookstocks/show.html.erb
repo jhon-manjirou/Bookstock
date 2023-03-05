@@ -1,0 +1,30 @@
+<% provide(:title, "show") %>
+<h1>Bookstocks#show</h1>
+
+<p><%= flash[:success] %></p>
+<div>
+    <%= form_with url: root_path, method: "get" do |f| %>
+        <% sort_list = ["小説", "コミック", "教育・技術", "その他"] %>
+        <% sort_list.each do |sort_item| %>
+            <%= f.radio_button :sort, sort_item %>
+            <%= f.label :sort, sort_item, value: sort_item %>
+        <% end %>
+        <%= f.submit "絞り込む" %>
+    <% end %>
+</div>
+
+<div>
+    <% if @bookstocks.present? %>
+        <ol>
+            <%= render @bookstocks %>
+        </ol> 
+    <% else %>
+        <p>見つかりません</p>
+    <% end %>
+</div>
+
+<div class="primary-menu">
+    <ul>
+        <li><%= link_to "登録ページ", edit_path %></li>
+    </ul>
+</div>

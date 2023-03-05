@@ -1,0 +1,13 @@
+<% provide(:title, "edit") %>
+<div>
+    <%= form_with model: @bookstock do |f| %>
+        <%= f.text_field :title, placeholder: "タイトルを入力……" %>
+        <% sort_list = ["小説", "コミック", "教育・技術", "その他"] %>
+        <% sort_list.each do |sort_item| %>
+            <%= f.radio_button :sort, sort_item %>
+            <%= f.label :sort, sort_item, value: sort_item %>
+        <% end %>
+        <%= f.text_field :author, placeholder: "著者を入力……" %>
+        <%= f.submit "登録" %>
+    <% end %>
+</div>
