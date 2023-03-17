@@ -1,6 +1,6 @@
 class BookstocksController < ApplicationController
   def show
-    @bookstocks = Bookstock.select_sort(params[:sort])
+    @bookstocks = Bookstock.select_sort(params[:sort]).page(params[:page]).per(16)
   end
 
   def edit
@@ -16,6 +16,13 @@ class BookstocksController < ApplicationController
       flash[:failed] = "登録に失敗しました。"
       redirect_to edit_path
     end
+  end
+
+  def destroy
+    @bookstock = Bookstock.find(params[:id])
+    @bookstock.destroy
+    flash[:success] = "書籍情報を削除しました。"
+    redirect_to request.referer
   end
 
   private

@@ -1,13 +1,26 @@
 <% provide(:title, "edit") %>
-<div>
-    <%= form_with model: @bookstock do |f| %>
-        <%= f.text_field :title, placeholder: "タイトルを入力……" %>
-        <% sort_list = ["小説", "コミック", "教育・技術", "その他"] %>
-        <% sort_list.each do |sort_item| %>
-            <%= f.radio_button :sort, sort_item %>
-            <%= f.label :sort, sort_item, value: sort_item %>
-        <% end %>
-        <%= f.text_field :author, placeholder: "著者を入力……" %>
-        <%= f.submit "登録" %>
+<div class="container mt-3">
+    <% if flash[:failed] %>
+       <div class="alert alert-warning" role="alert"><%= flash[:failed] %></div>
     <% end %>
+    <div class="d-flex justify-content-center">
+        <%= form_with model: @bookstock do |f| %>
+            <div class="mb-3">
+                <%= f.text_field :title, placeholder: "タイトルを入力……", class: "form-control" %>
+            </div>
+            <div class="mb-3">
+                <% sort_list = ["小説", "コミック", "教育・技術", "その他"] %>
+                <% sort_list.each do |sort_item| %>
+                    <div class="form-check">
+                        <%= f.radio_button :sort, sort_item, class: "form-check-input", type: "radio" %>
+                        <%= f.label :sort, sort_item, value: sort_item, class: "form-check-label" %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="mb-3">
+                <%= f.text_field :author, placeholder: "著者を入力……", class: "form-control" %>
+            </div>
+            <%= f.submit "登録", class: "btn btn-primary" %>
+        <% end %>
+    </div>
 </div>

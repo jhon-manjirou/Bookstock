@@ -1,3 +1,9 @@
-<p>
-    <%= bookstock.title %> | <%= bookstock.sort %> | <%= bookstock.author %>
-</p>
+<div class="col">
+    <div class="border bg-light mb-3 text-break">
+        <p class="fs-5 text-truncate"><%= bookstock.title %></p>
+        <span>
+            <%= bookstock.sort %> | <%= bookstock.author %>
+        </span>
+        <%= button_to "削除", bookstock_path(bookstock), method: :delete %>
+    </div>
+</div>

@@ -1,5 +1,9 @@
 class Bookstock < ApplicationRecord
-    # default_scope -> { order(title: :asc) }
+    validates :title, presence: true
+    validates :sort, presence: true
+    validates :author, presence: true
+
+    default_scope -> { order(title: :asc) }
     scope :select_sort, -> (sort) do    
         return if sort.nil?
         where(sort: sort)
