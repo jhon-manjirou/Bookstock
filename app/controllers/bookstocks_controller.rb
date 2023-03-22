@@ -1,6 +1,6 @@
 class BookstocksController < ApplicationController
   def show
-    @bookstocks = Bookstock.select_sort(params[:sort]).page(params[:page]).per(16)
+    @bookstocks = Bookstock.select_sort(params[:sort]).search_keyword(params[:keyword]).page(params[:page]).per(6)
   end
 
   def edit

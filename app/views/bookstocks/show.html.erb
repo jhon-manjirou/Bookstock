@@ -23,7 +23,7 @@
             <% end %>
             <%= paginate @bookstocks, theme: "bootstrap-5" %>
             <% if @bookstocks.present? %>
-                <ol class="row row-cols-2">
+                <ol>    
                     <%= render @bookstocks %>
                 </ol> 
             <% else %>

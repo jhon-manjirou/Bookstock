@@ -8,4 +8,9 @@ class Bookstock < ApplicationRecord
         return if sort.nil?
         where(sort: sort)
     end
+
+    scope :search_keyword, -> (keyword) do
+        return if keyword.nil?
+        where('title LIKE ? OR author LIKE ?', "%#{keyword}%", "%#{keyword}%")
+    end
 end
