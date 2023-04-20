@@ -29,6 +29,10 @@ gem "jbuilder"
 
 gem "faker"
 gem "kaminari"
+gem "bootstrap", "~> 5.2.0"
+gem "bootstrap5-kaminari-views"
+gem "jquery-rails"
+gem "mini_racer"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
